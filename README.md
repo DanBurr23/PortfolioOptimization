@@ -83,3 +83,18 @@ Commentary: Wow, crazy how a simple image compression can make such a huge diffe
 Next Step: Optimize CSS Delivery
 11/20:
 Change the print.css to only be used when media="print"
+
+11/18: Work on 60FPS for the pizza part
+Starting FPS is around 30-40ms. Yikes!
+Changed to use bootstrap instead of the style variable when generating pizza elements
+the helped a little, now I'm around 20-25 FPS
+Changed the variables in makeRandomPizza. We can use the same variable for all the for loops
+Modify the changePizzaSizes for loop, don't want to access the offset width in every iteration of the loop
+re-worked the resizePizza's code. Now that part is under 3ms. Still have to figure out why it's so high for generating the last 10 frames
+re-factored the updatePositions code. 
+Wow, now the scrolling is around 1ms!
+
+11/20
+ok, back to pageSpeed insights....
+Found a code snippet on a better way to load the google font api, now my score is 62 for both mobile and desktop. Told me to optimize images, I thought I did that already. 
+what?I optimized 2 images, and my pageSpeed insights score went to a 95 on mobile and 94 on desktop?
