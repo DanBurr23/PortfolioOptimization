@@ -98,3 +98,11 @@ Wow, now the scrolling is around 1ms!
 ok, back to pageSpeed insights....
 Found a code snippet on a better way to load the google font api, now my score is 62 for both mobile and desktop. Told me to optimize images, I thought I did that already. 
 what?I optimized 2 images, and my pageSpeed insights score went to a 95 on mobile and 94 on desktop?
+
+11/21 - 
+Restored code in updatePositions so that pizzas move during scrolling
+
+To use the site: 
+* Launch the index.html from the root directory
+* To access the pizza page, click on the link which says "Cam's Pizzeria"
+* Scroll down and look for the sliding bar. Changing the setting on this bar will change the size of the pizzas displayed on the screen
