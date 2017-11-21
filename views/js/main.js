@@ -438,8 +438,8 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    var pizzaSelectorAll = document.querySelectorAll(".randomPizzaContainer");
-	//var pizzaSelectorAll = document.getElementById("randomPizzaContainer");
+    //var pizzaSelectorAll = document.querySelectorAll(".randomPizzaContainer");
+	var pizzaSelectorAll = document.getElementsByClassName("randomPizzaContainer");
     var dx = determineDx(pizzaSelectorAll[0], size);
     var newwidth = (pizzaSelectorAll[0].offsetWidth + dx) + 'px';
 
@@ -462,9 +462,8 @@ window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
 //changed the loop counter from 200 to 100 to reduce the initial load
-//and after testing again, I'm bumping it down even further 
 var pizzasDiv = document.getElementById('randomPizzas');
-for (var i = 2; i < 60; i++) {
+for (var i = 2; i < 100; i++) {
   //var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -499,10 +498,13 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  //pulling this value out of the for loop
-  var phase = Math.sin((document.body.scrollTop / 1250));
-
-  var top = (document.body.scrollTop || document.documentElement.scrollTop) / 1250;
+  for (var i = 0; i < items.length; i++) {
+    // document.body.scrollTop is no longer supported in Chrome.
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var phase = Math.sin((scrollTop / 1250) + (i % 5));
+    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  }
+												  
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
